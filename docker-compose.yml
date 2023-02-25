@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+  rabbitmq:
+    image: rizkyaddon/kelinci:v1
+    ports:
+      - '4369:4369'
+      - '5551:5551'
+      - '5552:5552'
+      - '5672:5672'
+      - '25672:25672'
+      - '15672:15672'
+    environment:
+      - RABBITMQ_SECURE_PASSWORD=yes
+      - RABBITMQ_LOGS=-
+    volumes:
+      - 'rabbitmq_data:/bitnami/rabbitmq/mnesia'
+volumes:
+  rabbitmq_data:
+    driver: local
+
+# user : guest
+# pass : guest
+
+#version: '2'
+#
+#services:
+#  rabbitmq:
+#    image: rabbitmq-3.8-queue:latest
+#    ports:
+#      - '4369:4369'
+#      - '5672:5672'
+#      - '25672:25672'
+#      - '4012:15672'
+#    volumes:
+#      - 'rabbitmq_data:/bitnami'
+#
+#volumes:
+#  rabbitmq_data:
+#    driver: local
